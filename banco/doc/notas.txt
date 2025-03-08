@@ -1,0 +1,37 @@
+-- Crear la base de datos
+CREATE DATABASE Banco;
+
+-- Usar la base de datos
+USE Banco;
+
+-- Tabla de Clientes
+CREATE TABLE Clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    fecha_nacimiento DATE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(15)
+);
+
+-- Tabla de Cuentas
+CREATE TABLE Cuentas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    tipo_cuenta ENUM('Ahorros', 'Corriente') NOT NULL,
+    saldo DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_cliente) REFERENCES Clientes(id)
+);
+
+-- Tabla de Transacciones
+CREATE TABLE Transacciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_cuenta INT NOT NULL,
+    tipo_transaccion ENUM('Deposito', 'Retiro') NOT NULL,
+    monto DECIMAL(10, 2) NOT NULL,
+    fecha_transaccion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_cuenta) REFERENCES Cuentas(id)
+);
+
+
