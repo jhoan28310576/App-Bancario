@@ -39,9 +39,7 @@ func SetupRouter() *gin.Engine {
 	r.GET("/register", showRegisterPage)
 	r.POST("/register", register)
 
-	r.GET("/cuenta", authMiddleware(), func(c *gin.Context) {
-		c.HTML(http.StatusOK, "cuenta.html", nil)
-	})
+	r.GET("/cuenta", authMiddleware(), showCuentaPage)
 
 	r.GET("/logout", func(c *gin.Context) {
 		session := sessions.Default(c)
@@ -55,13 +53,10 @@ func SetupRouter() *gin.Engine {
 }
 
 func showLoginPage(c *gin.Context) {
-	mensaje := ""
-	if c.Query("registro") == "exitoso" {
-		mensaje = "¡Registro exitoso! Por favor inicia sesión"
-	}
-
 	c.HTML(http.StatusOK, "login.html", gin.H{
-		"mensaje": mensaje,
+		"Title":   "Login",
+		"mensaje": "¡Registro exitoso! Por favor inicia sesión",
+		"ShowNav": false, // No mostrar la navegación
 	})
 }
 
@@ -155,4 +150,27 @@ func authMiddleware() gin.HandlerFunc {
 		}
 		c.Next()
 	}
+}
+
+func showCuentaPage(c *gin.Context) {
+	// Supongamos que obtienes estos datos de la base de datos
+	clienteNombre := "Juan Pérez"
+	saldo := 1500.00
+	transacciones := []struct {
+		Fecha       string
+		Descripcion string
+		Monto       float64
+	}{
+		{"2023-10-01", "Depósito", 500.00},
+		{"2023-10-05", "Pago de Servicios", -100.00},
+		{"2023-10-10", "Transferencia", -200.00},
+	}
+
+	c.HTML(http.StatusOK, "base.html", gin.H{
+		"Title":         "Cuenta",
+		"ShowNav":       true,
+		"ClienteNombre": clienteNombre,
+		"Saldo":         saldo,
+		"Transacciones": transacciones,
+	})
 }

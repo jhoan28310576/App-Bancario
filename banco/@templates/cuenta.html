@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-</head>
-<body>
-   <h1>bienbenido</h1>
-</body>
-</html>
+{{ define "content" }}
+<div class="container mt-4 mb-4 mx-auto" style="max-width: 800px;"> <!-- Añadido mx-auto para centrar y max-width para limitar el ancho -->
+    <div class="row">
+        <!-- Sección de Información del Cliente -->
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Información del Cliente
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Nombre del Cliente</h5>
+                    <p class="card-text">{{ .ClienteNombre }}</p>
+                    <h5 class="card-title">Saldo</h5>
+                    <p class="card-text">${{ .Saldo }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Historial de Transacciones -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Historial de Transacciones
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Monto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ range .Transacciones }}
+                            <tr>
+                                <td>{{ .Fecha }}</td>
+                                <td>{{ .Descripcion }}</td>
+                                <td>${{ .Monto }}</td>
+                            </tr>
+                            {{ else }}
+                            <tr>
+                                <td colspan="3">No hay transacciones disponibles.</td>
+                            </tr>
+                            {{ end }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
