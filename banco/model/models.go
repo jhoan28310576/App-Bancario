@@ -1,6 +1,7 @@
 package model
 
 import (
+	"database/sql"
 	"time"
 )
 
@@ -10,7 +11,7 @@ type Cliente struct {
 	Apellido        string    `db:"apellido"`
 	FechaNacimiento time.Time `db:"fecha_nacimiento"`
 	Email           string    `db:"email"`
-	Telefono        string
+	Telefono        sql.NullString
 	Password        string `db:"password"`
 }
 

@@ -3,6 +3,7 @@ package routes
 import (
 	"banco/db" // Asegúrate de importar tu paquete de base de datos
 	"banco/model"
+	"database/sql"
 	"fmt"
 	"net/http"
 	"time"
@@ -30,23 +31,21 @@ func SetupRouter() *gin.Engine {
 	// Cargar las plantillas HTML
 	r.LoadHTMLGlob("@templates/*") // Asegúrate de que esta ruta sea correcta
 
-	r.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"message": "Bienvenido a la aplicación bancaria"})
-	})
-
-	r.GET("/login", showLoginPage)
+	r.GET("/", showLoginPage)
 	r.POST("/login", login)
 	r.GET("/register", showRegisterPage)
 	r.POST("/register", register)
 
 	r.GET("/cuenta", authMiddleware(), showCuentaPage)
 
+	r.GET("/usuario", authMiddleware(), showUsuarioPage) // Añadir esta línea
+
 	r.GET("/logout", func(c *gin.Context) {
 		session := sessions.Default(c)
 		session.Clear()
 		session.Options(sessions.Options{MaxAge: -1})
 		session.Save()
-		c.Redirect(http.StatusFound, "/login")
+		c.Redirect(http.StatusFound, "/")
 	})
 
 	return r
@@ -173,4 +172,31 @@ func showCuentaPage(c *gin.Context) {
 		"Saldo":         saldo,
 		"Transacciones": transacciones,
 	})
+}
+
+func showUsuarioPage(c *gin.Context) {
+	session := sessions.Default(c)
+	userID := session.Get("user_id")
+
+	if userID == nil {
+		c.Redirect(http.StatusFound, "/login")
+		return
+	}
+
+	var cliente struct {
+		Nombre   string
+		Apellido string
+		Email    string
+		Telefono sql.NullString // Mantener como sql.NullString para manejar NULL
+	}
+
+	err := db.DB.QueryRow("SELECT nombre, apellido, email, telefono FROM Clientes WHERE id = ?", userID).Scan(&cliente.Nombre, &cliente.Apellido, &cliente.Email, &cliente.Telefono)
+
+	if err != nil {
+		fmt.Printf("Error al ejecutar la consulta: %v\n", err) // Log del error
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error al obtener los datos del cliente"})
+		return
+	}
+
+	c.HTML(http.StatusOK, "usuario.html", cliente)
 }
