@@ -1,2 +1,16 @@
 jhoan@gmail.com
 123456789
+
+jose@gmail.com
+987654321
+
+ana@test.com
+987654321
+
+
+admin@example.com
+987654321
+
+ya funciona la recargar necesito saber que pasos dimos en @routes.go  @admin.html  y el sql @banco.sql  para que funcionara. ahora vamos por parte ademas hay que aplicar un alerta de mensaje cuando un admin recarge a un usuario
+ 2 )ademas de un historial de cada recarga del admin solo se muestra dicho historial en las pagina del admin  donde me diga el nombre del admin la fecha de recarga tambien lo llamaria deposito , y el monto depositado a dicha cuenta del cliente y el codigo de la cuenta 
+ 

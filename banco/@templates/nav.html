@@ -12,9 +12,15 @@
             </div>
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    {{ if .IsAdmin }} <!-- Mostrar botones solo si es admin -->
                     <li class="nav-item" style="margin-right: 15px;">
-                        <a class="nav-link" href="#" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Inicio</a>
+                        <a class="nav-link" href="/admin" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Administración</a>
                     </li>
+                    <li class="nav-item" style="margin-right: 15px;">
+                        <a class="nav-link" href="/historial" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Historial de Recargas</a>
+                    </li>
+                    {{ end }}
+                    {{ if .IsUser }} <!-- Mostrar botones solo si es usuario -->
                     <li class="nav-item" style="margin-right: 15px;">
                         <a class="nav-link" href="/usuario" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Usuario</a> <!-- Enlace actualizado -->
                     </li>
@@ -22,8 +28,9 @@
                         <a class="nav-link" href="/cuenta" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Cuenta</a>
                     </li>
                     <li class="nav-item" style="margin-right: 15px;">
-                        <a class="nav-link" href="#" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Transacción</a>
+                        <a class="nav-link" href="/transaccion" style="background-color: #007bff; color: white; padding: 5px 10px; border-radius: 5px;">Transacción</a>
                     </li>
+                    {{ end }}
                 </ul>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">

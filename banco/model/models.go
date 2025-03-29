@@ -13,6 +13,7 @@ type Cliente struct {
 	Email           string    `db:"email"`
 	Telefono        sql.NullString
 	Password        string `db:"password"`
+	CodigoCuenta    string `db:"codigo_cuenta"`
 }
 
 type Cuenta struct {
@@ -29,4 +30,12 @@ type Transaccion struct {
 	TipoTransaccion  string
 	Monto            float64
 	FechaTransaccion time.Time
+}
+
+type Administrador struct {
+	ID       int    `db:"id"`
+	Nombre   string `db:"nombre"`
+	Apellido string `db:"apellido"`
+	Email    string `db:"email"`
+	Password string `db:"password"`
 }
