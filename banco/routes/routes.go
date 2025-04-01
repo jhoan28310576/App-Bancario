@@ -32,8 +32,12 @@ func SetupRouter() *gin.Engine {
 	})
 	r.Use(sessions.Sessions("banco-session", store))
 
+	// Servir archivos estáticos
+	r.Static("/assets", "./assets")
+	r.StaticFile("/favicon.ico", "./assets/img/favicon.png")
+
 	// Cargar las plantillas HTML
-	r.LoadHTMLGlob("@templates/*") // Asegúrate de que esta ruta sea correcta
+	r.LoadHTMLGlob("templates/*") // Asegúrate de que esta ruta sea correcta
 
 	r.GET("/", showLoginPage)
 	r.POST("/login", login)
@@ -303,10 +307,19 @@ func abrirCuenta(c *gin.Context) {
 
 // funciones de login
 func showLoginPage(c *gin.Context) {
+	// Obtener el mensaje de la sesión si existe
+	session := sessions.Default(c)
+	mensaje := session.Get("mensaje")
+	// Limpiar el mensaje después de obtenerlo
+	if mensaje != nil {
+		session.Delete("mensaje")
+		session.Save()
+	}
+
 	c.HTML(http.StatusOK, "login.html", gin.H{
 		"Title":   "Login",
-		"mensaje": "¡Registro exitoso! Por favor inicia sesión",
-		"ShowNav": false, // No mostrar la navegación
+		"mensaje": mensaje,
+		"ShowNav": false,
 	})
 }
 
@@ -415,7 +428,13 @@ func register(c *gin.Context) {
 		})
 		return
 	}
-	// Cambiar la respuesta JSON por redirección
+
+	// Establecer el mensaje de éxito en la sesión
+	session := sessions.Default(c)
+	session.Set("mensaje", "¡Registro exitoso! Por favor inicia sesión")
+	session.Save()
+
+	// Redirigir a la página de login
 	c.Redirect(http.StatusSeeOther, "/")
 }
 

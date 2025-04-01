@@ -1,0 +1,88 @@
+{{ define "nav" }}
+<style>
+    .nav-link.navmovile {
+        color: white !important;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        position: relative;
+    }
+    
+    .nav-link.navmovile:hover {
+        background-color: rgba(11, 159, 204, 0.76);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-link.navmovile::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: white;
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link.navmovile:hover::after {
+        width: 100%;
+    }
+
+    .offcanvas {
+        background-color: hsla(229, 100.00%, 55.90%, 0.85) !important;
+    }
+
+    .offcanvas .navbar-nav .nav-link {
+        color: white !important;
+    }
+</style>
+<nav class="navbar navbar-expand-lg navbar-dark mt-4 mb-4" style="max-width: 780px; margin: auto;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/img/banco.png" alt="Logo Banco" height="70" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <a class="navbar-brand" href="#">
+                    <img src="/assets/img/banco.png" alt="Logo Banco" height="70" class="d-inline-block align-text-top">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"> <!-- Aplicar color de fondo y estilo -->
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    {{ if .IsAdmin }} <!-- Mostrar botones solo si es admin -->
+                    <li class="nav-item" style="margin-right: 15px;">
+                        <a class="nav-link navmovile" href="/admin" style=" border-radius: 5px;">Administración</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 15px;">
+                        <a class="nav-link navmovile" href="/historial" style=" border-radius: 5px;">Historial de Recargas</a>
+                    </li>
+                    {{ end }}
+                    {{ if .IsUser }} <!-- Mostrar botones solo si es usuario -->
+                    <li class="nav-item" style="margin-right: 15px;">
+                        <a class="nav-link navmovile" href="/usuario" style=" border-radius: 5px;">Usuario</a> <!-- Enlace actualizado -->
+                    </li>
+                    <li class="nav-item" style="margin-right: 15px;">
+                        <a class="nav-link navmovile" href="/cuenta" style=" border-radius: 5px;">Cuenta</a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 15px;">
+                        <a class="nav-link navmovile" href="/transaccion" style=" border-radius: 5px;">Transacción</a>
+                    </li>
+                    {{ end }}
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link navmovile" href="/logout" style=" border-radius: 5px;">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</nav>
+{{ end }}
