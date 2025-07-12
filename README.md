@@ -1,4 +1,4 @@
-[banco.txt](https://github.com/user-attachments/files/21199686/banco.txt)# 🏦 App Bancaria + Simulador Económico
+# 🏦 App Bancaria + Simulador Económico
 *(Inspirada en "La Riqueza de las Naciones" de Adam Smith)*
 
 Un sistema bancario completo desarrollado en Go utilizando el framework Gin para el manejo de rutas y MySQL como base de datos. Implementa operaciones bancarias esenciales con seguridad mejorada y principios económicos fundamentales.
@@ -122,7 +122,7 @@ App-Bancario/
    ```
 
 3. **Configurar la base de datos MySQL**:
-   importar a tu db MYSQL Nota cambiar la extencion de .txt  a  .sql [Uploading -- phpMyAdmin SQL Dump
+   importar a tu db MYSQL Nota cambiar la extencion de .txt  a  .sql [banco.txt](https://github.com/user-attachments/files/21199686/banco.txt)
 
    opcion 2
    crea la db y sus tablas
