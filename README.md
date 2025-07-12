@@ -123,9 +123,11 @@ App-Bancario/
 
 3. **Configurar la base de datos MySQL**:
 OPCION 1)  importar a la db de MYSQL contiene todo los usuarios y datos ya establecidos
+
 <img width="182" height="153" alt="image" src="https://github.com/user-attachments/assets/dece8e0c-36a7-4d81-82de-b6c14408f01f" />
 
 en notas.txt pueden encontrar las claves de los usuarios y admin del sistema 
+
 <img width="410" height="340" alt="image" src="https://github.com/user-attachments/assets/ca9e4f8b-8b33-4b1e-8554-d943804e810b" />
 
 OPCION 2) crear la db y sus tablas con sus campos y datos 
