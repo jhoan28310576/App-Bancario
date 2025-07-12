@@ -1,94 +1,71 @@
-# App Bancaria + Simulador Económico 
-*(Inspirada en "La Riqueza de las Naciones" de Adam Smith)*  
+App Bancaria + Simulador Económico
+(Inspirada en "La Riqueza de las Naciones" de Adam Smith)
 
-## 🏗️ Arquitectura 
-![Arquitectura](https://github.com/user-attachments/assets/f4783aa3-de0e-4062-8070-190a59c188ac)
+https://img.shields.io/badge/Go-1.18%252B-blue.svg
+https://img.shields.io/badge/License-MIT-yellow.svg
+https://img.shields.io/badge/Gin_Framework-1.8%252B-lightblue
 
-Un sistema bancario completo desarrollado en Go utilizando el framework Gin para el manejo de rutas y MySQL como base de datos. Implementa operaciones bancarias esenciales con seguridad mejorada.
+Un sistema bancario completo con simulador económico inspirado en los principios de Adam Smith. Desarrollado en Go con Gin para el enrutamiento y MySQL como base de datos, implementa operaciones bancarias seguras y un modelo económico virtual.
 
-Características Principales:
+https://github.com/user-attachments/assets/f4783aa3-de0e-4062-8070-190a59c188ac
 
-Sistema de Autenticación:
-Registro de nuevos usuarios con validación de campos
+🌟 Características Principales
+🔐 Sistema de Autenticación Avanzado
+Registro de usuarios con validación de campos
 
 Inicio de sesión seguro con sesiones persistentes
 
-Almacenamiento seguro de contraseñas usando bcrypt
+Almacenamiento de contraseñas con Bcrypt
 
 Gestión de sesiones con cookies cifradas
 
-Operaciones Bancarias:
+💰 Operaciones Bancarias Esenciales
+Depósitos: Acreditación de fondos con verificación
 
-Depósitos: Acreditación de fondos a cuentas
+Consultas de saldo en tiempo real
 
-Consultas de Saldo: Visualización de saldo actual
+Historial de transacciones detallado
 
-Historial de Transacciones: Registro detallado de movimientos
+Transferencias entre cuentas con validación
 
-Transferencias: Envío de fondos entre cuentas con validación
-
-Módulo de Depósitos:
-
-Interfaz administrativa para gestionar depósitos
+⚙️ Módulo de Depósitos
+Interfaz administrativa para gestión de depósitos
 
 Validación de efectivo físico
 
 Actualización instantánea de saldos
 
-Sistema de Transferencias:
-
-Transferencias entre cuentas con verificación de saldo
+🔄 Sistema de Transferencias Seguras
+Verificación de saldo antes de operaciones
 
 Generación de códigos únicos por transacción
 
 Validación en tiempo real de códigos de seguridad
 
-Historial completo de operaciones
+Historial completo de operaciones auditables
 
-Tecnologías Utilizadas:
-
+🛠️ Tecnologías Utilizadas
 Backend
-
-Lenguaje Principal: Go (Golang) 1.18+
-
-Framework Web: Gin (para enrutamiento y middleware)
-
-Gestión de Sesiones: Gin Sessions con almacenamiento en cookies
-
-Base de Datos: MySQL
-
-Driver de DB: github.com/go-sql-driver/mysql
-
-Hashing de Contraseñas: Bcrypt (golang.org/x/crypto/bcrypt)
-
-Manejo de Formularios: Gin Binding
-
-Frontend:
-
-Plantillas HTML: Gin HTML rendering
-
-Estilos: CSS (puede extenderse con Bootstrap u otros frameworks)
-
-Funcionalidades Técnicas:
-
-Generación de códigos únicos para transferencias
-
-Validación de datos de entrada en formularios
-
-Manejo de errores y respuestas HTTP adecuadas
-
-Conexión segura a base de datos MySQL
-
-Instalación y Configuración:
-
+Tecnología	Uso
+Go (Golang) 1.18+	Lenguaje principal del sistema
+Gin Framework	Enrutamiento y manejo de middlewares
+Gin Sessions	Gestión de sesiones de usuario
+MySQL	Almacenamiento persistente de datos
+go-sql-driver/mysql	Conexión a base de datos MySQL
+Bcrypt	Cifrado seguro de contraseñas
+Gin Binding	Validación de formularios y datos
+Frontend
+Tecnología	Uso
+Gin HTML Templates	Renderizado de vistas del servidor
+CSS/HTML	Estructura y estilos básicos
+(Extensible a Bootstrap)	Para futuras mejoras de UI
+🚀 Instalación y Configuración
 Requisitos Previos
-
 Go 1.18+
 
 MySQL 5.7+
 
 Git
-
 
 
 Clonar el repositorio:
@@ -114,4 +91,7 @@ const (
 Iniciar el servidor:
 
 go run main.go
+  
 
+## 🏗️ Arquitectura 
+![Arquitectura](https://github.com/user-attachments/assets/f4783aa3-de0e-4062-8070-190a59c188ac)
