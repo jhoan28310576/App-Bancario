@@ -3,6 +3,9 @@
 
 Un sistema bancario completo desarrollado en Go utilizando el framework Gin para el manejo de rutas y MySQL como base de datos. Implementa operaciones bancarias esenciales con seguridad mejorada y principios económicos fundamentales.
 
+informe App Bancaria + Simulador Económico: [Informe sobre el app bancario.pdf](https://github.com/user-attachments/files/21199964/Informe.sobre.el.app.bancario.pdf)
+
+
 ## 📋 Tabla de Contenidos
 - [Características Principales](#características-principales)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
