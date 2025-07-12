@@ -3,6 +3,9 @@
 
 Un sistema bancario completo desarrollado en Go utilizando el framework Gin para el manejo de rutas y MySQL como base de datos. Implementa operaciones bancarias esenciales con seguridad mejorada y principios económicos fundamentales.
 
+informe App Bancaria + Simulador Económico: [Informe sobre el app bancario.pdf](https://github.com/user-attachments/files/21199964/Informe.sobre.el.app.bancario.pdf)
+
+
 ## 📋 Tabla de Contenidos
 - [Características Principales](#características-principales)
 - [Tecnologías Utilizadas](#tecnologías-utilizadas)
@@ -122,6 +125,16 @@ App-Bancario/
    ```
 
 3. **Configurar la base de datos MySQL**:
+OPCION 1)  importar a la db de MYSQL contiene todo los usuarios y datos ya establecidos
+
+<img width="182" height="153" alt="image" src="https://github.com/user-attachments/assets/dece8e0c-36a7-4d81-82de-b6c14408f01f" />
+
+en notas.txt pueden encontrar las claves de los usuarios y admin del sistema 
+
+<img width="410" height="340" alt="image" src="https://github.com/user-attachments/assets/ca9e4f8b-8b33-4b1e-8554-d943804e810b" />
+
+OPCION 2) crear la db y sus tablas con sus campos y datos 
+
    ```sql
    CREATE DATABASE Banco;
    USE Banco;
@@ -168,18 +181,18 @@ App-Bancario/
    );
    ```
 
-4. **Configurar conexión a la base de datos** (en `db/db.go`):
+5. **Configurar conexión a la base de datos** (en `db/db.go`):
    ```go
    // Modificar la línea de conexión según tus credenciales
    DB, err = sql.Open("mysql", "usuario:contraseña@tcp(127.0.0.1:3306)/Banco")
    ```
 
-5. **Iniciar el servidor**:
+6. **Iniciar el servidor**:
    ```bash
    go run main.go
    ```
 
-6. **Acceder a la aplicación**:
+7. **Acceder a la aplicación**:
    - Abrir navegador en: `http://localhost:8080`
 
 ## 📁 Estructura del Proyecto
@@ -259,3 +272,4 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ---
 
 **Desarrollado con ❤️ usando Go y Gin Framework**
+
